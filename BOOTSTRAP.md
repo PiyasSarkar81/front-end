@@ -26,4 +26,9 @@ UIKit is a lightweight CSS framework featuring a small set of responsive compone
 ## [MVP.css](https://andybrewer.github.io/mvp/)
 MVP.css is a small CSS library that automatically styles HTML elements without needing to apply CSS classes to them. The library aims to allow a developer to quickly prototype a user interface without worrying about the final design, while still being visually appealing. MVP comes from the technical term Minimal Viable Product, a product with sufficient features to demo to customers or other business stakeholders.
 
+## Additional Resources
+[Choosing between Traditional Web Apps and Single Page Apps (Microsoft)](https://learn.microsoft.com/en-us/dotnet/architecture/modern-web-apps-azure/choose-between-traditional-web-and-single-page-apps)
 
+[React Source Code (Github)](https://github.com/facebook/react)
+
+[Introduction to React.js](https://www.youtube.com/watch?v=XxVg_s8xAms)
