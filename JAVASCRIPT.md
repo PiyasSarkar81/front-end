@@ -192,3 +192,255 @@ For example, the assignment operator is right-to-left associative, while the gre
 var num = 10; // the value on the right is assigned to the variable name on the left
 5 > 4 > 3; // the 5 > 4 is evaluated first (to `true`), then true > 3 is evaluated to `false`, because the `true` value is coerced to `1`
 ```
+
+## Conditional examples
+### __if...else__
+```js
+if(light == "green") {
+    console.log("Drive")
+} else if (light == "orange") {
+    console.log("Get ready")
+} else if (light == "red") {
+    console.log("Dont' drive")
+} else {
+    //this block will run if no condition matches
+    console.log("The car is not green, orange, or red");
+}
+```
+### __switch...case__
+```js
+//converting the previous if-else example with switch-case
+switch(light) {
+   case 'green':
+       console.log("Drive");
+       break;
+   case 'orange':
+       console.log("Get ready");
+       break;
+   case 'red':
+       console.log("Don't drive");
+       break;
+   default:
+       //this block will run if no condition matches
+       console.log('The light is not green, orange, or red');
+       break;
+}
+```
+### __LOOPS__
+__for loops & While loops__
+```js
+//nested loops - one inside another
+for (var firstNum = 0; firstNum < 2; firstNum++) {
+    for (var secondNum = 0; secondNum < 10; secondNum++) {
+        console.log(firstNum + " times " + secondNum + " equals " + firstNum * secondNum);
+    }
+}
+```
+#### __uses of loop__
+`Note: In order to have the styles applied, try running this code snippet in your browser's console`.
+
+That's it, with this simple code, the output in the console shows each letter on a separate line, styled like a letter cube for toddlers.
+
+The code itself should be mostly familiar, except for the `cubes.length` and the `cubes[i]` syntax.
+
+Without getting into too many details, here are both code snippets explained as simple as possible.
+
+The `cubes.length` returns a number. Since `cubes` is a string of characters the `cubes.length` gives me the length of the string saved in the variable.
+```js 
+var cubes = 'ABCDEFG';
+//styling console output using CSS with a %c format specifier
+for (var i = 0; i < 7; i++) {
+    var styles = "font-size: 40px; border-radius: 10px; border: 1px solid blue; background: pink; color: purple";
+    console.log("%c" + cubes[i], styles)
+}
+```
+<img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/80UV44AjRfe3wSiZ5hrO3Q_cc31ca26763041eb84d824c6facbeca1_console-output-1.png?expiry=1677196800000&amp;hmac=Br7t0fqljaAb-cQF-tKGa3F3ABdrpUQtFMXvEKr5TSs" alt="Styling console output" data-asset-id="80UV44AjRfe3wSiZ5hrO3Q" class="cml-image-default undefined">
+
+The second piece of code that's new here is the `cubes[i]` snippet.
+
+This simply targets each individual letter in the loop, based on the current value of the i variable.
+
+In other words, `cubes[i]`, when `i` is equal to `0`, is: `A`.
+
+Then, `cubes[i]`, when `i` is equal to `1`, is: `B`.
+
+This goes on for as many loops my for loop runs - and this is determined by the `cubes.length` value.
+
+It's also very versatile, since, if I, for example, decided to change the length of the `cubes` string, I would not have to update the condition of `i < cubes.length`, because it gets automatically updated when I change the length of the `cubes` string.
+
+There are some other ways to store data in JavaScript apps that you haven't heard about.
+
+But we can use the same approach with those other kinds of data, to achieve results that essentially work on the same principle as the one just described.
+
+Using loops is the essence of the approach taken in developing many different pieces of functionality in software today.
+
+Some more specific examples include:
+
+* looping over blog post titles in some structured data, and displaying each blog post title on a blog home page
+
+* looping over social media posts in some structured data, and displaying each social media post based on some conditions
+
+* looping over some structured data on clothing available for sale in an online clothing store, and displaying relevant data for each item of clothing
+## Additional resources for Conditionals and Loops
+[Comporison Operations](https://www.javascripttutorial.net/javascript-comparison-operators/)
+
+[Truthy](https://developer.mozilla.org/en-US/docs/Glossary/Truthy)
+
+[Falsy](https://developer.mozilla.org/en-US/docs/Glossary/Falsy)
+
+[Conditional Statements](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/conditionals)
+
+[Conditional (Ternary) Operations](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)
+
+## Building and calling functions
+```js
+function listArrayItems(arr) {
+    for (var i = 0; i < arr.length; i++) {
+        console.log(i+1, arr[i])
+    }
+}
+var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink'];
+listArrayItems(colors);
+```
+
+Output:
+```
+1 'red'
+2 'orange'
+3 'yellow'
+4 'green'
+5 'blue'
+6 'purple'
+7 'pink'
+```
+## Object Literals and the Dot Notation
+It essentially consists of two steps: 
+
+1. Declaring a new variable and assigning an object literal to it - in other words, this: `var assistantManager = {}` 
+
+2. Assigning the values to each of the object's keys, using the assignment operator, `=`
+
+```js
+//creating an object with properties and their values
+var assistantManager = {
+    rangeTilesPerTurn: 3,
+    socialSkills: 30,
+    streetSmarts: 30,
+    health: 40,
+    specialAbility: "young and ambitious",
+    greeting: "Let's make some money"
+}
+```
+To access the `assistantManager` object, I can simply console log the entire object:  
+```js
+console.log(assistantManager);//display the object in the developer console
+```
+The returned value is the entire table object:  
+```js
+{
+    rangeTilesPerTurn: 3,
+    socialSkills: 30,
+    streetSmarts: 30,
+    health: 40,
+    specialAbility: "young and ambitious",
+    greeting: "Let's make some money"
+}
+```
+Additionally, I can console log any individual property, like this:  
+```js
+console.log(assistantManager.health); // 30
+```
+An alternative approach of building objects is to first save an empty object literal to a variable, then use the dot notation to declare new properties on the fly, and use the assignment operator to add values to those properties; for example:
+```js
+var house2 = {};
+house2.rooms = 4;
+house2.color = "pink";
+house2.priceUSD = 12345;
+```
+## Object Literals and the Brackets Notation
+```js
+var house2 = {};
+house2["rooms"] = 4;
+house2['color']= "pink";
+house2["priceUSD"] = 12345;
+console.log(house2); // {rooms: 4, color: 'pink', priceUSD: 12345}
+```
+ there's one really useful thing that bracket notation has but is not available in the dot notation: It can evaluate expressions.
+ ```js
+var arrOfKeys = ['speed', 'altitude', 'color'];
+var drone = {
+    speed: 100,
+    altitude: 200,
+    color: "red"
+}
+for (var i = 0; i < arrOfKeys.length; i++) {
+    console.log(drone[arrOfKeys[i]])
+}
+ ```
+ *Output*:
+ ```
+100
+200
+red
+ ```
+ Using the fact that brackets notation can evaluate expressions, I accessed the `arrOfKeys[i]` property on the `drone` object. 
+
+This value changed on each loop while the for loop was running.
+
+Specifically, the first time it ran, it was evaluated like this: 
+
+* The value of `i` was `0`
+
+* The value of `arrOfKeys[i]` was `arrOfKeys[0]`, which was `"speed"` 
+
+* Thus, `drone[arrOfKeys[i]]` was evaluated to `drone["speed"]` which is equal to `100`
+
+This allowed me to loop over each of the values stored inside the `drone` object, based on each of its properties' keys.
+
+## Arrays are Objects
+* Explain that arrays are objects, with their own built-in properties and methods
+
+* Outline the common way to extend arrays using the `push()` method
+
+* and explain how to trim the last member of an array using the `pop()` method
+```js
+function arrayBuilder(one, two, three) {
+    var arr = [];
+    arr.push(one);
+    arr.push(two);
+    arr.push(three);
+    return arr;
+}
+
+var simpleArr = arrayBuilder('apple', 'pear', 'plum');
+
+console.log(simpleArr); // ['apple','pear','plum']
+```
+## Math object cheat sheet
+### __Number constants__
+* The PI number: `Math.PI` which is approximately 3.14159
+
+* The Euler's constant: `Math.E` which is approximately 2.718
+
+* The natural logarithm of 2: `Math.LN2` which is approximately 0.693
+### __Rounding methods__
+* `Math.ceil()` - rounds up to the closest integer 
+
+ * `Math.floor()` - rounds down to the closest integer 
+
+* `Math.round()` - rounds up to the closest integer if the decimal is .5 or above; otherwise, rounds down to the closest integer 
+* `Math.trunc()` - trims the decimal, leaving only the integer
+### __Arithmetic and calculus methods__
+* `Math.pow(2,3)` - calculates the number 2 to the power of 3, the result is 8 
+
+* `Math.sqrt(16)` - calculates the square root of 16, the result is 4 
+
+* `Math.cbrt(8)` - finds the cube root of 8, the result is 2 
+
+* `Math.abs(-10)` - returns the absolute value, the result is 10 
+
+* Logarithmic methods: `Math.log(), Math.log2(), Math.log10()` 
+
+* Return the minimum and maximum values of all the inputs: `Math.min(9,8,7)` returns `7`, `Math.max(9,8,7)` returns `9`.
+
+*  Trigonometric methods: `Math.sin(), Math.cos(), Math.tan()`, etc.
