@@ -281,16 +281,6 @@ Some more specific examples include:
 * looping over social media posts in some structured data, and displaying each social media post based on some conditions
 
 * looping over some structured data on clothing available for sale in an online clothing store, and displaying relevant data for each item of clothing
-## Additional resources for Conditionals and Loops
-[Comporison Operations](https://www.javascripttutorial.net/javascript-comparison-operators/)
-
-[Truthy](https://developer.mozilla.org/en-US/docs/Glossary/Truthy)
-
-[Falsy](https://developer.mozilla.org/en-US/docs/Glossary/Falsy)
-
-[Conditional Statements](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/conditionals)
-
-[Conditional (Ternary) Operations](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)
 
 ## Building and calling functions
 ```js
@@ -397,6 +387,24 @@ Specifically, the first time it ran, it was evaluated like this:
 
 This allowed me to loop over each of the values stored inside the `drone` object, based on each of its properties' keys.
 
+## Object Methods
+```js
+//example of adding properties and methods to an object
+var car = {};
+car.mileage = 98765;
+car.color = "red";
+console.log(car);
+car.turnTheKey = function() {
+    console.log("The engine is running")
+}
+car.lightsOn = function() {
+    console.log("The lights are on.")
+}
+console.log(car);
+car.turnTheKey();
+car.lightsOn()
+```
+
 ## Arrays are Objects
 * Explain that arrays are objects, with their own built-in properties and methods
 
@@ -444,3 +452,157 @@ console.log(simpleArr); // ['apple','pear','plum']
 * Return the minimum and maximum values of all the inputs: `Math.min(9,8,7)` returns `7`, `Math.max(9,8,7)` returns `9`.
 
 *  Trigonometric methods: `Math.sin(), Math.cos(), Math.tan()`, etc.
+
+## String cheat sheet
+
+```js
+var greet = "Hello, ";
+var place = "World"
+greet.length; // 7
+greet.charAt(0); // 'H'
+"Wo".concat("rl").concat("d"); // 'World'
+"ho-ho-ho".indexOf('h'); // 0
+"ho-ho-ho".indexOf('o'); // 1
+"ho-ho-ho".indexOf('-'); // 2
+"ho-ho-ho".split("-"); // ['ho', 'ho', 'ho']
+greet.toUpperCase(); // "HELLO, "
+greet.toLowerCase(); // "hello, "
+```
+
+## Syntax, logical and runtime errors
+### __ReferenceError__
+A ReferenceError gets thrown when, for example, one tries to use variables that haven't been declared anywhere.
+```js
+console.log(username);
+// Output : Uncaught ReferenceError: username is not defined
+```
+### __SyntaxError__
+Any kind of invalid JavaScript code will cause a SyntaxError.
+```js
+var a "there's no assignment operator here";
+// Output : Uncaught SyntaxError: Unexpected string
+```
+it cannot be caught using the `try-catch` block.
+### __TypeError__
+A TypeError is thrown when, for example, trying to run a method on a non-supported data type.
+```js
+"hello".pop() // Uncaught TypeError: "hello".pop is not a function
+```
+### __RangeError__
+```js
+(10).toString(2); // '1010'
+(10).toString(8); // 12
+```
+* The value of `2` when passed to the `toString()` method, is like saying to JavaScript: "convert the value of 10 of the Base `10` number system, to its counter-part in the Base `2` number system".
+* I get back the value 12, which is the plain number 10, writen in Base 8 number system.
+
+However, if I try to use a non-existing number system, such as an imaginary Base 100, since this number system effectively doesn't exist in JavaScript, I will get the RangeError, because a non-existing Base 100 system is `out of range` of the number systems that are available to the `toString()` method:
+```js
+(10).toString(100); // Uncaught RangeError: toString() radix argument must be between 2 and 36
+```
+
+
+
+## The functional programming paradigm
+"There are actually several styles of coding, also known as paradigms. A common style is called functional programming, or FP for short.
+
+Another style is object-oriented programming (OOP). In this style, we group data and functionality as properties and methods inside objects.
+
+OOP helps us model real-life objects. It works best when the grouping of properties and data in an object makes logical sense - meaning, the properties and methods "belong together".
+
+### __First-class functions__
+* pass to other functions
+* save in a variable
+* return from other functions
+```js
+function addTwoNums(a, b) {
+    console.log(a + b)
+}
+
+function randomNum() {
+    return Math.floor((Math.random() * 10) + 1);
+}
+function specificNum() { return 42 };
+
+var useRandom = true;
+
+var getNumber;
+
+if(useRandom) {
+    getNumber = randomNum
+} else {
+    getNumber = specificNum
+}
+
+addTwoNums(getNumber(), getNumber())
+```
+
+__This works because functions in JavaScript are truly first-class citizens, which can be assigned to variable names and passed around just like I would pass around a string, a number, an object, etc.__
+
+### __Higher-order functions__
+* It accepts other functions as arguments
+* It returns functions when invoked
+```js
+function addTwoNums(getNumber1, getNumber2) {
+    console.log(getNumber1() + getNumber2());
+}
+
+addTwoNums(specificNum, specificNum); // returned number is 84
+addTwoNums(specificNum, randomNum); // returned number is 42 + some random number
+```
+
+### __Pure functions and side-effects__
+A pure function returns the exact same result as long as it's given the same values.
+```js
+function addTwoNums(a, b) {
+    console.log(a + b)
+}
+addTwoNums(5,6); // 11
+```
+
+
+## Additional resources
+
+[Comporison Operations](https://www.javascripttutorial.net/javascript-comparison-operators/)
+
+[Truthy](https://developer.mozilla.org/en-US/docs/Glossary/Truthy)
+
+[Falsy](https://developer.mozilla.org/en-US/docs/Glossary/Falsy)
+
+[Conditional Statements](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/conditionals)
+
+[Conditional (Ternary) Operations](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)
+
+[Javascripts Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions)
+
+[JavaScript object basics](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Basics)
+
+[Javascript typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)
+
+[Javascript Array](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Arrays)
+
+[function declaration](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)
+
+[try...catch](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch)
+
+[Iteration protocols](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols)
+
+[Math](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math)
+
+[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+
+[JavaScript error reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors)
+
+[null](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/null)
+
+[undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined)
+
+[Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions)
+
+[Recursion](https://developer.mozilla.org/en-US/docs/Glossary/Recursion)
+
+[Scope](https://developer.mozilla.org/en-US/docs/Glossary/Scope)
+
+[Functional Programming: JavaScript](https://www.toptal.com/javascript/functional-programming-javascript)
+
+[First-class Function](https://developer.mozilla.org/en-US/docs/Glossary/First-class_Function)

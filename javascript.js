@@ -99,3 +99,56 @@ function listArrayItems(arr) {
 }
 var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink'];
 listArrayItems(colors);
+
+// randum integer
+// get a arndum decimel number between 0 and 0.99... and save it to a variable
+var decimal = Math.random()*10;
+// Round up the value of the decimal
+var rounded = Math.ceil(decimal)
+// log the valu of the decimal to the console
+console.log(rounded);
+
+//concat method
+var name = ' Lisa'
+var gritting = 'Hello'
+console.log(gritting.concat(name) )
+
+// 'typeof' operator
+var test = typeof(3<8);
+console.log(test)
+
+// Error handaling (try...catch)
+function addTwoNums(a,b) {
+    try {
+        if(typeof(a) != 'number') {
+            throw new ReferenceError('the first argument is not a number')
+        } else if (typeof(b) != 'number') {
+            throw new ReferenceError('the second argument is not a number')
+        } else {
+            console.log(a + b)
+        }
+    } catch(err) {
+        console.log("Error!", err)
+    }
+}
+addTwoNums(5, "5")
+console.log("It still works")
+
+// function return statement
+function doubleIt(a){
+    console.log(2*a)
+    return 2*a; // return the val
+}
+var d = doubleIt(3);
+console.log(d);
+
+// functional paradime
+var shoes = 100;
+var stateTax = 1.2;
+function totalPrise(product,tax){
+    return product*tax;
+}
+var toPay = totalPrise(shoes,stateTax);
+ console.log(toPay);
+
+ 
