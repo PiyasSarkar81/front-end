@@ -559,6 +559,476 @@ function addTwoNums(a, b) {
 }
 addTwoNums(5,6); // 11
 ```
+## Object Oriented Programming principles
+### __The Benefits of OOP__
+OOP helps developers to mimic the relationship between objects in the real world. 
+
+* Allows you to write modular code,
+
+* Makes your code more flexible and
+
+* Makes your code reusable. 
+
+### __The Principles of OOP__
+The four fundamental OOP principles are `inheritance`, `encapsulation`,` abstraction` and` polymorphism`.
+ 
+ creating obbjects from classes is to use the new  keyword. When using a default or empty constructor method, JavaScript implicitly calls the Object superclass to create the instance.
+```js
+class Animal { /* ...class code here... */ }
+
+var myDog = new Animal()
+
+console.log (myDog)
+```
+
+### __OOP Principles: Inheritance__
+In essence, it's a very simple concept. It works like this: 
+
+1. There is a base class of a "thing".
+
+2. There is one or more sub-classes of "things" that inherit the properties of the base class (sometimes also referred to as the "super-class")
+
+3. There might be some other sub-sub-classes of "things" that inherit from those classes in point 2.
+
+*Note:* that each sub-class inherits from its super-class. In turn, a sub-class might also be a super-class, if there are classes inheriting from that sub-class.
+
+To setup the inheritance relation between classes in JavaScript, I can use the `extends` keyword, as in `class B extends A`.
+```js
+class Animal { /* ...class code here... */ }
+class Bird extends Animal { /* ...class code here... */ }
+class Eagle extends Bird { /* ...class code here... */ }
+```
+### __OOP Principles: Encapsulation__
+In the simplest terms, encapsulation has to do with making a code implementation "hidden" from other users, in the sense that they don't have to know how my code works in order to "consume" the code.
+```js
+"abc".toUpperCase();
+```
+I don't really need to worry or even waste time thinking about how the `toUpperCase()` method works. All I want is to use it, since I know it's available to me. Even if the underlying syntax - that is, the implementation of the `toUpperCase()` method changes - as long as it doesn't break my code, I don't have to worry about what it does in the background, or even how it does it.
+
+### __OOP Principles: Abstraction__
+Abstraction is all about writing code in a way that will make it more generalized.
+
+The concepts of encapsulation and abstraction are often misunderstood because their differences can feel blurry.
+
+It helps to think of it in the following terms: 
+
+* An abstraction is about extracting the concept of what you're trying to do, rather than dealing with a specific manifestation of that concept. 
+
+* Encapsulation is about you not having access to, or not being concerned with, how some implementation works internally.
+
+### __OOP Principles: Polymorphism__
+Polymorphism is a word derived from the Greek language meaning "multiple forms". An alternative translation might be: "something that can take on many shapes".
+
+So, to understand what polymorphism is about, let's consider some real-life objects.
+
+* A door has a bell. It could be said that the bell is a property of the door object. This bell can be rung. When would someone ring a bell on the door? Obviously, to get someone to show up at the door.
+
+* Now consider a bell on a bicycle. A bicycle has a bell. It could be said that the bell is a property of the bicycle object. This bell could also be rung. However, the reason, the intention, and the result of somebody ringing the bell on a bicycle is not the same as ringing the bell on a door.
+
+```js
+const bicycle = {
+    bell: function() {
+        return "Ring, ring! Watch out, please!"
+    }
+}
+const door = {
+    bell: function() {
+        return "Ring, ring! Come here, please!"
+    }
+}
+```
+So, I can access the `bell()` method on the `bicycle` object, using the following syntax: 
+```js
+bicycle.bell(); // "Get away, please"
+```
+I can also access the `bell()` method on the `door` object, using this syntax:  
+```js
+door.bell(); // "Come here, please"
+```
+At this point, one can conclude that the exact same name of the method can have the exact opposite intent, based on what object it is used for.
+
+Now, to make this code truly polymorphic, I will add another function declaration:
+```js
+function ringTheBell(thing) {
+    console.log(thing.bell())
+}
+```
+Now I have declared a `ringTheBell()` function. It accepts a `thing` parameter - which I expect to be an object, namely, either the `bicycle` object or the `door` object.
+
+So now, if I call the `ringTheBell()` function and pass it the `bicycle` as its single argument, here's the output:
+```js
+ringTheBell(bicycle); // Ring, ring! Watch out, please!
+```
+However, if I invoke the `ringTheBell()` function and pass it the `door` object, I'll get the following output:
+```js
+ringTheBell(door); // "Ring, ring! Come here, please!"
+```
+Here's an example of polymorphism using classes in JavaScript:
+```js
+class Bird {
+    useWings() {
+        console.log("Flying!")
+    }
+}
+class Eagle extends Bird {
+    useWings() {
+        super.useWings()
+        console.log("Barely flapping!")
+    }
+}
+class Penguin extends Bird {
+    useWings() {
+        console.log("Diving!")
+    }
+}
+var baldEagle = new Eagle();
+var kingPenguin = new Penguin();
+baldEagle.useWings(); // "Flying! Barely flapping!"
+kingPenguin.useWings(); // "Diving!"w
+```
+The `Penguin` and `Eagle` sub-classes both inherit from the `Bird` super-class. The `Eagle` sub-class inherits the `useWings()` method from the `Bird` class, but extends it with an additional console log. The `Penguin` sub-class doesn't inherit the `useWings()` class - instead, it has its own implementation, although the `Penguin` class itself does extend the `Bird` class.  
+## Constructors
+JavaScript has a number of built-in object types, such as:
+
+ `Math, Date, Object, Function, Boolean, Symbol, Array, Map, Set, Promise, JSON,` etc.
+
+These objects are sometimes referred to as "native objects".
+
+Constructor functions, commonly referred to as just "constructors", are special functions that allow us to build instances of these built-in native objects. All the constructors are capitalized.
+
+To use a constructor function, I must prepend it with the operator `new`.
+
+For example, to create a new instance of the `Date` object, I can run: `new Date()`. What I get back is the current datetime, such as:
+
+`Thu Feb 03 2022 11:24:08 GMT+0100 (Central European Standard Time)` 
+
+However, not all the built-in objects come with a constructor function. An example of such an object type is the built-in `Math` object.
+
+Running `new Math()` throws an `Uncaught TypeError`, informing us that `Math is not a constructor`.
+
+Thus, I can conclude that some built-in objects do have constructors, when they serve a particular purpose: to allow us to instantiate a specific instance of a given object's constructor. The built-in `Date` object is perfectly suited for having a constructor because each new date object instance I build should have unique data by definition, since it's going to be a different timestamp - it's going to be built at a different moment in time.
+
+Other built-in objects that don't have constructors, such as the `Math` object, don't need a constructor. They're just static objects whose properties and methods can be accessed directly, from the built-in object itself. In other words, there is no point in building an instance of the built-in `Math` object to be able to use its functionality.
+
+For example, if I want to use the `pow` method of the `Math` object to calculate exponential values, there's no need to build an instance of the `Math` object to do so. For example, to get the number 2 to the power of 5, I'd run:
+
+`Math.pow(2,5); // --> 32`
+
+There's no need to build an instance of the `Math` object since there would be nothing that needs to be stored in that specific object's instance.
+
+Besides constructor functions for the built-in objects, I can also define custom constructor functions.
+
+Here's an example:
+```js
+function Icecream(flavor) {
+    this.flavor = flavor;
+    this.meltIt = function() {
+        console.log(`The ${this.flavor} icecream has melted`);
+    }
+}
+
+let kiwiIcecream = new Icecream("kiwi");
+let appleIcecream = new Icecream("apple");
+kiwiIcecream; // --> Icecream {flavor: 'kiwi', meltIt: ƒ}
+appleIcecream; // --> Icecream {flavor: 'apple', meltIt: ƒ}
+```
+I've just built two instance objects of `Icecream` type.
+
+The most common use case of `new` is to use it with one of the built-in object types.
+
+Note that using constructor functions on all built-in objects is sometimes not the best approach.
+
+This is especially true for object constructors of primitive types, namely: `String`, `Number`, and `Boolean`.
+
+For example, using the built-in `String` constructor, I can build new strings:
+```js
+let apple = new String("apple");
+apple; // --> String {'apple'}
+```
+The `apple` variable is an object of type `String`.
+
+Let's see how the `apple` object differs from the following `pear` variable:
+```js
+let pear = "pear";
+pear; // --> "pear"
+```
+The `pear` variable is a string literal, that is, a primitive Javascript value.
+
+The `pear` variable, being a primitive value, will always be more performant than the `apple` variable, which is an object.
+
+Besides being more performant, due to the fact that each object in JavaScript is unique, you can't compare a String object with another String object, even when their values are identical.
+
+In other words, if you compare `new String('plum') === new String('plum')`, you'll get back `false`, while `"plum" === "plum"` returns `true`. You're getting the `false` when comparing objects because it is not the values that you pass to the constructor that are being compared, but rather the memory location where objects are saved.
+
+Besides not using constructors to build object versions of primitives, you are better off not using constructors when constructing plain, regular objects.
+
+Instead of `new Object`, you should stick to the object literal syntax: `{}`.
+
+A `RegExp` object is another built-in object in JavaScript. It's used to __pattern-match strings__ using what's known as "Regular Expressions". Regular Expressions exist in many languages, not just JavaScript.
+
+In JavaScript, you can built an instance of the RegExp constructor using `new RegExp`. 
+
+Alternatively, you can use a pattern literal instead of RegExp. Here's an example of using /d/ as a pattern literal, passed-in as an argument to the `match` method on a string.
+```js
+"abcd".match(/d/); // null
+"abcd".match(/a/); // ['a', index: 0, input: 'abcd', groups: undefined]
+```
+Instead of using Array, Function, and RegExp constructors, you should use their array literal, function literal, and pattern literal varieties: `[]`, `()` `{}`, and `/()/`.
+
+However, when building objects of other built-in types, we can use the constructor.
+
+Here are a few examples:
+```js
+new Date();
+new Error();
+new Map();
+new Promise();
+new Set();
+new WeakSet();
+new WeakMap();
+```
+## Creating classes
+
+```js
+class StationaryBike {
+    constructor(position, gears) {
+        this.position = position
+        this.gears = gears
+    }
+}
+
+class Treadmill {
+    constructor(position, modes) {
+        this.position = position
+        this.modes = modes
+    }
+}
+
+class Gym {
+    constructor(openHrs, stationaryBikePos, treadmillPos) {
+        this.openHrs = openHrs
+        this.stationaryBike = new StationaryBike(stationaryBikePos, 8)
+        this.treadmill = new Treadmill(treadmillPos, 5)
+    }
+}
+
+var boxingGym = new Gym("7-22", "right corner", "left corner")
+
+console.log(boxingGym.openHrs) //
+console.log(boxingGym.stationaryBike) //
+console.log(boxingGym.treadmill) //
+```
+
+In this example, there are three classes defined: `StationaryBike`, `Treadmill`, and `Gym`.
+
+The `StationaryBike` class is coded so that its future object instance will have the `position` and `gears` properties. The `position` property describes where the stationary bike will be placed inside the gym, and the gears propery gives the number of `gears` that that stationary bike should have.
+
+The `Treadmill` class also has a position, and another property, named `modes` (as in "exercise modes").
+
+The `Gym` class has three parameters in its constructor function: `openHrs, stationaryBikePos, treadmillPos`.
+
+This code allows me to instantiate a new instance object of the `Gym` class, and then when I inspect it, I get the following information:
+
+* the `openHrs` property is equal to `"7-22"` (that is, 7am to 10pm)
+
+* the `stationaryBike` property is an object of the `StationaryBike` type, containing two properties: `position` and `gears`
+
+* the `treadmill` property is an object of the `Treadmill` type, containing two properties: `position` and` modes`
+## Default Parameters
+```js
+class WithDefaultParams {
+    constructor(num1 = 1, num2 = 2, num3 = 3, string1 = "Result:", bool1 = true) {
+        this.num1 = num1;
+        this.num2 = num2;
+        this.num3 = num3;
+        this.string1 = string1;
+        this.bool1 = bool1;
+    }
+    calculate() {
+        if(this.bool1) {
+            console.log(this.string1, this.num1 + this.num2 + this.num3);
+            return;
+        }
+        return "The value of bool1 is incorrect"
+    }
+}
+var better = new WithDefaultParams();
+better.calculate(); // Result: 6
+```
+
+This approach improves the developer experience of my code, because I no longer have to worry about feeding the `WithDefaultParameters` class with all the arguments. For quick tests, this is great, because I no longer need to worry about passing the proper arguments.
+
+```js
+class Animal {
+    constructor(color = 'yellow', energy = 100) { // constructor: color, energy
+        this.color = color;
+        this.energy = energy;
+    }
+    isActive() {// isActive()
+        if(this.energy > 0) {// if energy > 0, energy -=20, console log energy
+            this.energy -= 20;
+            console.log('Energy is decreasing, currently at:', this.energy)
+        } else if(this.energy == 0){// else if energy <= 0, sleep()
+            this.sleep();
+        }
+    }
+    sleep() {// sleep()
+        this.energy += 20; // energy += 20
+        console.log('Energy is increasing, currently at:', this.energy)   // console.log energy
+    }
+    getColor() {
+        console.log(this.color)
+    }
+}
+
+class Cat extends Animal { // constructor: sound, canJumpHigh, canClimbTrees, color, energy
+    constructor(sound = 'purr', canJumpHigh = true, canClimbTrees = true, color, energy) {
+        super(color, energy);
+        this.sound = sound;
+        this.canClimbTrees = canClimbTrees;
+        this.canJumpHigh = canJumpHigh;
+    }
+    makeSound() {  // makeSound()
+        // console.log sound
+        console.log(this.sound);
+    }
+}
+
+class Bird extends Animal {
+    constructor(sound = 'chirp', canFly = true, color, energy) {      // constructor: sound, canFly, color, energy
+        super(color, energy);
+        this.sound = sound;
+        this.canFly = canFly;
+    }
+    makeSound() {  // makeSound()
+        console.log(this.sound);  // console.log sound
+    }
+}
+
+class HouseCat extends Cat {  
+    constructor(houseCatSound = "meow", sound,canJumpHigh,canClimbTrees, color,energy) { // constructor: houseCatSound, sound, canJumpHigh, canClimbTrees, color, energy
+        super(sound,canJumpHigh,canClimbTrees, color,energy);
+        this.houseCatSound = houseCatSound;
+    }
+    makeSound(option) { // makeSound(option)
+        if (option) {  // if (option)
+            super.makeSound();  // super.makeSound()
+        }
+        console.log(this.houseCatSound); 
+    }
+}
+
+class Tiger extends Cat {
+    constructor(tigerSound = "Roar!", sound,canJumpHigh,canClimbTrees, color,energy) { // constructor: tigerSound, sound, canJumpHigh, canClimbTrees, color, energy
+        super(sound,canJumpHigh,canClimbTrees, color,energy);
+        this.tigerSound = tigerSound;
+    }
+    makeSound(option) { // makeSound(option)
+        if (option) { // if (option)
+            super.makeSound(); // super.makeSound()
+        }
+        console.log(this.tigerSound); // console.log(tigerSound)
+    }
+}
+
+class Parrot extends Bird {
+    constructor(canTalk = false, sound,canFly, color,energy) { // constructor: canTalk, sound, canJumpHigh, canClimbTrees, color, energy
+        super(sound,canFly, color,energy);
+        this.canTalk = canTalk;
+    }
+    makeSound(option) { // makeSound(option)
+        if (option) {
+            super.makeSound();
+        }
+        if (this.canTalk) { // if (canTalk)
+            console.log("I'm a talking parrot!");
+        }
+    }
+}
+
+var fiji = new Parrot(false); // we're passing `false` to the constructor so that fiji can't talk
+var polly = new Parrot(true); // we're passing `true` to the constructor so that polly can talk
+
+fiji.makeSound(); // undefined
+fiji.makeSound(true); // chirp
+
+polly.makeSound(); // I'm a talking parrot!
+polly.makeSound(true); // chirp, I'm a talking parrot!
+
+polly.color; // yellow
+polly.energy; // 100
+
+polly.isActive(); // Energy is decreasing, currently at: 80
+
+var penguin = new Bird("shriek", false, "black and white", 200); // setting all the custom properties
+penguin; // Bird {color: 'black and white', energy: 200, sound: 'shriek', canFly: false }
+
+penguin.sound; // 'shriek'
+penguin.canFly; // false
+penguin.color; // 'black and white'
+penguin.energy; // 200
+penguin.isActive(); // Energy is decreasing, currently at: 180
+
+var leo = new HouseCat();
+
+// leo, no purring please:
+leo.makeSound(false); // meow
+// leo, both purr and meow now:
+leo.makeSound(true); // purr, meow
+
+var cuddles = new Tiger();
+cuddles.makeSound(false); // Roar!
+cuddles.makeSound(true); // purr, Roar!
+```
+
+## For of loops and objects
+```js
+const colors = ['red','orange','yellow']
+for (var color of colors) {
+    console.log(color);
+}
+/* Output
+red
+orange
+yellow
+*/
+```
+```js
+const car2 = {
+    speed: 200,
+    color: "red"
+}
+console.log(Object.keys(car2)); // ['speed','color']
+
+const car3 = {
+    speed: 300,
+    color: "yellow"
+}
+console.log(Object.values(car3)); // [300, 'yellow']
+
+const car4 = {
+    speed: 400,
+    color: 'magenta'
+}
+console.log(Object.entries(car4));
+// [ ['speed', 400], ['color', 'magenta'] ]
+```
+To summarise, you learned that you can loop over arrays using the `for of` loop.  You also learned that you can extract object's keys, values, or both, using the `Object.keys()`, `Object.values()` and `Object.entries()` syntax.
+
+You now have all the ingredients that you need to __loop over any object's own property keys and values__.
+
+```js
+var clothingItem = {
+    price: 50,
+    color: 'beige',
+    material: 'cotton',
+    season: 'autumn'
+}
+
+for( key of Object.keys(clothingItem) ) {
+    console.log(keys, ":", clothingItem[key])
+}
+```
 
 
 ## Additional resources
@@ -606,3 +1076,11 @@ addTwoNums(5,6); // 11
 [Functional Programming: JavaScript](https://www.toptal.com/javascript/functional-programming-javascript)
 
 [First-class Function](https://developer.mozilla.org/en-US/docs/Glossary/First-class_Function)
+
+[constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor)
+
+[Classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
+
+[The Flavors of Object-Oriented Programming](https://css-tricks.com/the-flavors-of-object-oriented-programming-in-javascript/)
+
+[RegExp](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
