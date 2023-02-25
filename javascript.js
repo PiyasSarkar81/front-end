@@ -151,4 +151,17 @@ function totalPrise(product,tax){
 var toPay = totalPrise(shoes,stateTax);
  console.log(toPay);
 
- 
+ // for of loops and objects
+ const car ={
+    engine : true
+ }
+ const sportsCar = Object.create(car)
+sportsCar.speed = "fast";
+console.log("Sports car objects" ,sportsCar);
+for(prop in sportsCar)
+{
+    console.log(prop)
+}
+for(prop of Object.keys(sportsCar)){
+    console.log(prop + ' : '+ sportsCar[prop]);
+}

@@ -1029,7 +1029,166 @@ for( key of Object.keys(clothingItem) ) {
     console.log(keys, ":", clothingItem[key])
 }
 ```
+## Template literals examples
+Alongside the previous ways to build strings, ES6 introduced the use of backtick characters as delimiters:  
+```js
+`Hello, World!`
+let greet = "Hello";
+let place = "World";
+console.log(`${greet} ${place} !`) //display both variables using template literals
+console.log(greet + " " + place + "!"); //display both variables without using template literals
+```
+*  template literals allow for multi-line strings - something that simply isn't possible with string literals.
+```js
+// "Hello,
+// World" // not possible
+`Hellow,
+World!`
+```
+* the reason why it's possible to interpolate variables in template literals is because this syntax actually allows for expression evaluation. 
+```js
+//it's possible to perform arithmetic operation inside a template literal expression
+console.log(`${1 + 1 + 1 + 1 + 1} stars!`) //Outeput : 5 starts!
+```
+Some additional use cases of template literals are __nested template literals__ and __tagged templates__.
 
+## Data Structures examples
+### __Working with arrays in JavaScript__
+__The `forEach()` method__
+```js
+const fruits = ['kiwi','mango','apple','pear'];
+function appendIndex(fruit, index) {
+    console.log(`${index}. ${fruit}`)
+}
+fruits.forEach(appendIndex);
+/*
+Output:
+0. kiwi
+1. mango
+2. apple
+3. pear
+*/
+```
+the `forEach()` method accepts __a function that will work on each array item__. That function's first parameter is the current array item itself, and the second (optional) parameter is the index.
+
+Very often, the function that the `forEach()` method needs to use is passed in directly into the method call, like this:
+```js
+const veggies = ['onion', 'garlic', 'potato'];
+veggies.forEach( function(veggie, index) {
+    console.log(`${index}. ${fruit}`);
+});
+```
+__The `filter()` method__
+
+The `filter()` method filters your arrays based on a specific test. Those array items that pass the test are returned.
+```js
+const nums = [0,10,20,30,40,50];
+nums.filter( function(num) {
+    return num > 20;
+})
+// Output : [30,40,50]
+```
+__The `map()` method__
+
+This method is used to map each array item over to another array's item, based on whatever work is performed inside the function that is passed-in to the map as a parameter. 
+```js
+[0,10,20,30,40,50].map( function(num) {
+    return num / 10
+})
+// Output : [0,1,2,3,4,5]
+```
+__Working with Objects in JavaScript__
+```js
+const result = [];
+const drone = {
+    speed: 100,
+    color: 'yellow'
+}
+const droneKeys = Object.keys(drone);
+droneKeys.forEach( function(key) {
+    result.push(key, drone[key])
+})
+console.log(result)
+// Output : ['speed',100,'color','yellow']
+```
+__Working with Maps in JavaScript__
+```js
+let bestBoxers = new Map();
+bestBoxers.set(1, "The Champion");
+bestBoxers.set(2, "The Runner-up");
+bestBoxers.set(3, "The third place");
+
+console.log(bestBoxers);
+
+// Output : Map(3) {1 => 'The Champion', 2 => 'The Runner-up', 3 => 'The third place'}
+// To get a specific value
+bestBoxers.get(1); // 'The Champion'
+```
+__Working with Sets in JavaScript__
+```js
+const repetitiveFruits = ['apple','pear','apple','pear','plum', 'apple'];
+const uniqueFruits = new Set(repetitiveFruits);
+console.log(uniqueFruits);
+// Output : {'apple', 'pear', 'plum'}
+```
+## Using Spread and Rest
+ * Add new members to arrays without using the push() method,
+
+* Convert a string to an array and
+
+* Copy either an object or an array into a separate object
+
+__Join arrays, objects using the rest operator__
+```js
+const fruits = ['apple', 'pear', 'plum']
+const berries = ['blueberry', 'strawberry']
+const fruitsAndBerries = [...fruits, ...berries] // concatenate
+console.log(fruitsAndBerries); // outputs a single array
+// Output : ['apple', 'pear', 'plum', 'blueberry', 'strawberry'] 
+
+// It's also easy to join objects:
+const flying = { wings: 2 }
+const car = { wheels: 4 }
+const flyingCar = {...flying, ...car}
+console.log(flyingCar) // {wings: 2, wheels: 4}
+```
+__Add new members to arrays without using the `push()` method__
+```js
+let veggies = ['onion', 'parsley'];
+veggies = [...veggies, 'carrot', 'beetroot'];
+console.log(veggies);
+// Output : ['onion', 'parsley', 'carrot', 'beetroot']
+```
+__Convert a string to an array using the spread operator__
+```js
+const greeting = "Hello";
+const arrayOfChars = [...greeting];
+console.log(arrayOfChars); //  ['H', 'e', 'l', 'l', 'o']
+```
+__Copy either an object or an array into a separate one__
+
+```js
+const car1 = {
+    speed: 200,
+    color: 'yellow'
+}
+const car 2 = {...car1}
+
+car1.speed = 201
+
+console.log(car1.speed, car2.speed)
+
+// Output : 201, 200
+```
+You can copy an array into a completely separate array, also using the spread operator, like this:
+```js
+const fruits1 = ['apples', 'pears']
+const fruits2 = [...fruits]
+fruits1.pop()
+console.log(fruits1, "not", fruits2)
+
+// Output : ['apples'] 'not' ['apples','pears']
+```
 
 ## Additional resources
 
@@ -1084,3 +1243,13 @@ for( key of Object.keys(clothingItem) ) {
 [The Flavors of Object-Oriented Programming](https://css-tricks.com/the-flavors-of-object-oriented-programming-in-javascript/)
 
 [RegExp](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
+
+[Template literals (Template strings)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
+
+[Arrow function expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
+
+[Spread syntax (...)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
+
+[Rest parameters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters)
+
+[JavaScript Data Structures](https://data-flair.training/blogs/javascript-data-structures/)
