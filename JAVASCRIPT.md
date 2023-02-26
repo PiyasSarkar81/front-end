@@ -1189,7 +1189,51 @@ console.log(fruits1, "not", fruits2)
 
 // Output : ['apples'] 'not' ['apples','pears']
 ```
+## DOM manipulation - Web page content update
 
+* use this in `example.com` website
+
+*consol*
+```js
+var h1 = document.createElement('h1')
+h1.innerText = "Type into the input to make this text change"
+
+var input = document.createElement('input')
+input.setAttribute('type', 'text')
+
+document.body.innerText = '';
+document.body.appendChild(h1);
+document.body.appendChild(input);
+
+input.addEventListener('change', function() {
+    h1.innerText = input.value
+})
+```
+
+*consol*
+```js
+// Create a inarective webside case
+var h1 = document.querySelector('h1')
+undefined
+var arr = [
+    'Example Domain',
+    'First Click',
+    'Second Click',
+    'Third Click'
+]
+undefined
+var handleClicks = function(){
+  switch(h1.innerText){
+    case arr[0]: h1.innerText = arr[1]; break; case arr[1]: h1.innerText = arr[2]; break; case arr[2]: h1.innerText = arr[3]; break; default: h1.innerText = arr[0]; 
+  }
+}
+undefined
+h1.addEventListener('click',  handleClicks
+)
+undefined
+h1.addEventListener('click',  handleClicks()
+) 
+```
 ## Additional resources
 
 [Comporison Operations](https://www.javascripttutorial.net/javascript-comparison-operators/)
@@ -1253,3 +1297,29 @@ console.log(fruits1, "not", fruits2)
 [Rest parameters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters)
 
 [JavaScript Data Structures](https://data-flair.training/blogs/javascript-data-structures/)
+
+[JavaScript modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)
+
+[Modules: CommonJS modules](https://nodejs.org/api/modules.html#modules-commonjs-modules)
+
+[Document Object Model (DOM)](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)
+
+[Document.querySelector()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector)
+
+[Event](https://developer.mozilla.org/en-US/docs/Web/API/Event)
+
+[EventTarget.addEventListener()](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)
+
+[Working with JSON](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON)
+
+[Server-side website programming](https://developer.mozilla.org/en-US/docs/Learn/Server-side)
+
+[Node.js v19.7.0 documentation](https://nodejs.org/api/documentation.html)
+
+[Jest tasting framework webside](https://jestjs.io/)
+
+[Cypress testing framework webside](https://www.cypress.io/)
+
+[npm webside](https://www.npmjs.com/)
+
+[Unit testing webside](https://www.browserstack.com/guide/unit-testing-in-javascript)

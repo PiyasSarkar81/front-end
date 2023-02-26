@@ -165,3 +165,18 @@ for(prop in sportsCar)
 for(prop of Object.keys(sportsCar)){
     console.log(prop + ' : '+ sportsCar[prop]);
 }
+
+// JS DOM Manipulation
+
+// const h2 = document.createElement('h2')
+// undefined
+// h2.innerText = "This is an h2 heading"
+// "This is an h2 heading"
+// h2.setAttribute('id', 'sub-heading')
+// undefined
+// h2.setAttribute('class', 'secondary')
+// undefined
+// h2
+// <h2 id="sub-heading" class="secondary">
+// document.body.appendChild(h2)
+// <h2 id="sub-heading" class="secondary">
