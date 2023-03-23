@@ -899,6 +899,233 @@ This attribute let's you add a description to the iframe for accessibility purpo
 </iframe> 
 ```
 
+# CSS
+
+## Flexbox properties
+ Original HTML code:
+
+```html
+<body>
+  <div class="flex-container">
+    <div class="box box1">  One..</div>
+    <div class="box box2">  Two..</div>
+    <div class="box box3">  Three..</div>
+    <div class="box box4">  Four..</div>
+    <div class="box box5">  Five..</div>
+    <div class="box box6">  Six..</div>
+    <div class="box box7">  Seven..</div>
+  </div>
+```
+ Original CSS file: 
+
+```css
+.box{
+    background-color: aquamarine;
+    border-radius: 5px;
+    margin: 2px;
+    padding: 10px;
+}
+```
+Output:
+
+<img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/G-dz3RFcSfqnc90RXLn6ag_557f7fb0056c49be907c6d8d279612e1_Picture2.png?expiry=1679702400000&amp;hmac=SWq4ZtSwVRO7wARBndyYaG_WHzuVkOG51xdcAeAQViU" alt="Output for CSS Code with listed number boxes" data-asset-id="G-dz3RFcSfqnc90RXLn6ag" class="cml-image-default undefined">
+
+Output for CSS Code with listed number boxes
+
+There are seven div containers inside the HTML file.
+
+The corresponding CSS file contains rules for all seven div tags that have the box class. Note how two class names are given for each of the tags, one that is common among all classes and another independent of it. The style is applied to all the containers. 
+
+Now let’s add properties to the flex container by converting it into flex. 
+
+__display: flex;__
+```css
+.flex-container{
+    display: flex;
+}
+```
+
+The output is now seven flex containers that run from left to right starting in the top left corner.
+
+<img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/YQvW2PFGQ82L1tjxRgPNpw_dbf8df41153245b480b57b84db885de1_Picture3.png?expiry=1679702400000&amp;hmac=mLYJG0KMVsG3kjRiuFmfbpCFITs8iZ0I6_B97G9KkVU" alt="Output for CSS Code with aligned number boxes" data-asset-id="YQvW2PFGQ82L1tjxRgPNpw" class="cml-image-default undefined">
+
+
+### Alignment properties
+ Let’s examine a few alignment properties inside the flex. There are four main properties used to align a flex container and items present inside it:  
+
+* justify-content. For item alignment on main axis.
+
+* align-items. For item alignment on cross axis.
+
+* align-self. For unique flex items on cross axis.
+
+* align-content. Used for packing flex lines and control over space.
+
+Of these, justify-content and align-items are frequently used for the respective two axes. 
+
+Let’s first examine the use of justify-content which has a value of ‘left’ by default.
+
+__justify-content__
+
+CSS:
+
+```css
+.flex-container{
+    display: flex;
+    justify-content: center
+}
+```
+Output:
+
+<img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/23k1weWbT-m5NcHlmw_pPA_cb30cd5ee8fd4dcd9c4eb75e19c0dde1_Picture4.png?expiry=1679702400000&amp;hmac=BvhdqJOHkp56FjoWlVWusSBkJhFjlz4ZTIA7BIAuBmM" alt="The output for CSS Code with justification in the center" data-asset-id="23k1weWbT-m5NcHlmw_pPA" class="cml-image-default undefined">
+
+__flex-wrap:__
+The default for this property is ‘nowrap’ which means the items will span the entire width of the axis. 
+
+```css
+.flex-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+```
+Output:
+
+<img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/0luqSS1sQQKbqkktbHECIg_0dca56850210440f91a0aec100c74fe1_Picture5.png?expiry=1679702400000&amp;hmac=Tw_uf3-CHPFy_udpwXZKN5p2JceS0nqWvTgNZdrb2rI" alt="Output for CSS code with wrapped number boxes justified in the center" data-asset-id="0luqSS1sQQKbqkktbHECIg" class="cml-image-default undefined">
+
+The items will now be wrapped to the size of the available viewport. 
+
+__flex-direction:__
+
+This property is used to set the main axis, which is a ‘row’ by default. It basically means you are changing your ‘main’ axis from horizontal rows to vertical columns. 
+
+CSS Code:
+
+```css
+.flex-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+```
+  Output:
+
+<img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/wAfOom9cSBeHzqJvXKgXCw_81279a0a0ffa4b299ef120fb64c252e1_Picture6.png?expiry=1679702400000&amp;hmac=xeFO3ysnWDBvwwat_TF9xV4RW2tXaVEoKyQPUVrCizA" alt="Display of listed number boxes as a flex" data-asset-id="wAfOom9cSBeHzqJvXKgXCw" class="cml-image-default undefined">
+
+The output looks like the original output; however, it is now actually a flex.
+
+ Now let’s align the items again and examine a couple of the other properties mentioned earlier.   
+
+__align-items:__
+
+The alignment on the cross-axis is done with the help of this property. Let’s change the value for it to ‘flex-end’. 
+
+CSS Code:
+
+```css
+.flex-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items:flex-end;
+}
+```
+ Output:
+
+<img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/3VPeiAOETRST3ogDhC0U2A_3c6e7af5e29b47e588a71d07671735e1_Picture7.png?expiry=1679702400000&amp;hmac=0Or9jOMcbAgZ0UXhi1ZpvSnfbyWN9QYCfeIVdPYZJNw" alt="Right-centered number boxes with the flex end aligning method." data-asset-id="3VPeiAOETRST3ogDhC0U2A" class="cml-image-default undefined">
+  
+
+The term ‘end’ refers to the right side of the page as the left side is seen as the beginning. 
+
+__align-self:__
+
+This property can be used on individual items inside the flex. 
+
+```css
+.flex-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items:flex-end;
+}
+.box3{
+    background-color: blanchedalmond;
+    align-self: center;
+}
+```
+ Output:       
+
+<img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/mm3YQNF-TnWt2EDRft51kg_2ae1f658e0c24967bd8fbfe6e00443e1_Picture8.png?expiry=1679702400000&amp;hmac=5avx02tAtW9yR-kf3SodWwG9XRRUQ4gfAWMrwaDVI80" alt="Output to display of a change in the color and alignment of individual items" data-asset-id="mm3YQNF-TnWt2EDRft51kg" class="cml-image-default undefined">
+  
+
+Here the color and alignment of the third box have been changed and it overrides the properties set using align-items.     
+
+__gap:__
+
+gap property can be used to create space between the items along the main axis. You can also individually configure the gaps in rows and columns using row-gap and column-gap properties.   
+
+CSS Code:
+
+```css
+.flex-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items:flex-end;
+    gap:10px;
+}
+.box3{
+    background-color: blanchedalmond;
+}
+```
+ Output:
+
+<figure role="figure" contenteditable="false"><img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/ztkm6NUSQ9iZJujVEiPYHg_90b99e4f7a584b28ae59c926b9b513e1_Picture9.png?expiry=1679702400000&amp;hmac=hivWs3mxJp8CofyOJNmld3JufFzi5tPJuwx3bGA9OsM" alt="Display of items with different spacing" data-asset-id="ztkm6NUSQ9iZJujVEiPYHg" class="cml-image-default undefined"></figure>
+
+There is a clear change in spacing between the items. 
+
+The final set of properties are flex-grow, flex-shrink and flex-basis. Together these determine how the flex takes up space, grows or shrinks according to the space available.
+
+These are the sub-properties of a property called flex. Together all three properties can also be given values with the help of something called the shorthand notation in CSS. Shorthand notation helps you make your code compact and also easy to write and follow. The values left empty in shorthand notation are given their default values. 
+
+For example:
+
+```css
+.flex-container{
+flex: 0 1 auto;
+}
+```
+
+Here for the flex-container class, there is a set rule for the flex property. The values correspond to the three properties, namely the flex-grow set to 0, flex-shrink to 1 and flex-basis to auto. The flex-basis sets the initial size of the container. and together they define the rigidity or flexibility and dynamism you want to add to the flexbox. 
+
+To demonstrate the effect of this, the code has to be modified slightly by removing the flex-direction value set to ‘column’. This will change it to default ‘row’ and the output will again be centrally aligned and horizontal best-distributed between two rows. 
+
+Output:
+
+<img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/yEoMipglQMyKDIqYJWDMmA_e9e7e0fe3299407eaf95742f32e6eee1_Picture10.png?expiry=1679702400000&amp;hmac=dq0cu9FKp_s1BjRrDAvC06kQICDxD5Nk2HhSMRDxS6Y" alt="List of items as default raw modified by removing the flex direction" data-asset-id="yEoMipglQMyKDIqYJWDMmA" class="cml-image-default undefined">
+
+The rest of the remaining code is unchanged. However, the output will change if the code is modified with the addition of the flex property inside the flex item box3 class. 
+
+CSS Code:
+
+```css
+.box3{
+    background-color: blanchedalmond;
+    align-self: center;
+    flex: 1 1 auto;
+}
+```
+ Output:
+
+<img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/46TFyd29TLukxcndvZy7Tg_f0c1fe9ee37a45438aa31fb8cb871be1_Picture11.png?expiry=1679702400000&amp;hmac=woa0NVkaDnsfKzjTBFz60sBPBHLWbfWswDG1zjJ1Dqs" alt="Different spacing of items in row display" data-asset-id="46TFyd29TLukxcndvZy7Tg" class="cml-image-default undefined">
+
+The third box now takes up the entire free space available because flex-growth’s value has been set to 1. So if we have `flex-grow` set to 1, the children will all set to equal size. And if one of the children has a value of 1.5, that child would take up more space as compared to the others.
+
+
 ## Additional resources
 [Client-Side Form Validation with HTML5](https://www.sitepoint.com/client-side-form-validation-html5/)
 
@@ -911,3 +1138,15 @@ This attribute let's you add a description to the iframe for accessibility purpo
 [Why Does Your Website Look Different In Different Browsers?](https://www.webfx.com/web-design/learn/why-does-your-website-look-different-in-different-browsers/)
 
 [Sending form data](https://developer.mozilla.org/en-US/docs/Learn/Forms/Sending_and_retrieving_form_data)
+
+https://html.com/media/
+
+https://studio.support.brightcove.com/publish/publishing/choosing-correct-embed-code.html
+
+https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Images_in_HTML
+
+https://www.educba.com/iframes-in-html/
+
+https://www.tutorialrepublic.com/html-tutorial/html5-canvas.php
+
+https://html.spec.whatwg.org/multipage/media.html
