@@ -1125,6 +1125,298 @@ CSS Code:
 
 The third box now takes up the entire free space available because flex-growth’s value has been set to 1. So if we have `flex-grow` set to 1, the children will all set to equal size. And if one of the children has a value of 1.5, that child would take up more space as compared to the others.
 
+### __Relative values__
+|Unit|Description and relativity|
+|:---:|:---:|
+|  `em` |  Font size of the parent where present. |
+|  `ex` |  x-co-ordinate or height of the font element. |
+|  `ch` |  Width of the font character. |
+|  `rem` | Font size of the root element.  |
+|  `lh` |  Value computed for line height of parent element.  |
+|   `rlh`| Value computed for line height of root element which is `<html>`.  |
+|   `vw`|  1% of the viewport width. |
+|   `vh`|  1% of the viewport height. |
+|  `vmin`| 1% of the smaller dimension of viewport.  |
+| `vmax` |  1% of the larger dimension of viewport. |
+|  `%` |  Denotes a percentage value in relation to its parent element. 
+
+
+## Grids and flexbox cheat sheet
+
+### __Grid__
+The syntax for creating a grid:
+
+```css
+selector{
+    display: grid; /* or inline-grid */
+}
+```
+Grid shorthand consists of the following properties with default values:
+
+`grid`
+
+A grid will allow you organize the various elements on your page. 
+
+`grid-template-rows: none`
+
+This feature allows you configure your elements so that they are organized similarly to rows on a table. 
+
+`grid-template-columns: none`
+
+This feature allows you configure your elements but with this setting the elements are organized like columns on a table. 
+
+`grid-template-areas: none`
+
+This feature allows you configure the names of a grid and how they sit in relation to one another. 
+
+`grid-auto-rows: auto`
+
+Default setting for all row sizes that have not been explicitly configured. 
+
+`grid-auto-columns: auto`
+
+Default setting for all column sizes that have not been explicitly configured. 
+
+`grid-auto-flow: row`
+
+Default location for rows that are not explicitly allocated. 
+
+`column-gap: normal`
+
+This sets the gap between the columns
+
+`row-gap: normal`
+
+This sets the gap between the rows
+
+### __Grid properties for container__
+`grid-template-columns: measurement units | % units |repeat()`
+
+Defines the line names, and maintains a constant size of column items. Can accept a range of different measurement sizes.
+
+`grid-template-rows: measurement units | % units |repeat()`
+
+Defines the line names, and maintains a constant size of rows. Can accept a range of different measurement sizes.
+
+`grid-auto-columns: measurement unit (fixed value for all columns)`
+
+Determines the default size for columns that have not been explicitly configured. 
+
+`grid-auto-rows: measurement unit (fixed value for all rows)`
+
+Determines the default size for rows that have not been explicitly configured.
+
+`grid-template: “header header” auto`
+
+This allows you define and maintain named cells on a grid 
+
+`"main right" 75vh`
+
+This defines two cells named main and right, that have a sizing of 75% of the viewport height. 
+
+`"footer footer" 20rem`
+
+This defines two cells named footer and footer, that have a sizing of 20 root em (rem). This defines the size in relation to the html font size. 
+
+### __Gap__
+`grid-gap: measurement units`
+
+Determines the gap between rows and columns 
+
+`grid-column-gap: measurement units`
+
+Determines the gap between columns
+
+`grid-row-gap: m-unit-1  m-unit-2`
+
+Determines the gap between columns
+
+### __Alignment__
+`justify-items: start | center | end | stretch `
+
+Defines the default space that is allot to each item on the grid 
+
+`align-items: start | center | end | stretch`
+
+Defines the default space related to an item along the grid’s block axis  
+
+`place-items: start | stretch` /* shorthand for two properties above */
+
+This feature allows you align items with  the block and inline directions.
+
+### __Justification__
+`justify-content: start | center | end | stretch | space-between | space-evenly | space-around`
+
+Defines browser allocation of space to content items in relation to the main-axis 
+
+`align-content: start | center | end | stretch | space-between | space-evenly | space-around`
+
+Defines browser allocation of space to content items in relation to cross axis and block axis  
+
+`place-content: center | start`
+
+This feature allows you align items with  the block and inline directions.
+
+### __Positioning__
+`grid-auto-flow: row | column | dense`
+
+This relates to how the items are placed automatically within the grid
+
+`grid-auto-columns: measurement units`
+
+This relates to the size for columns created without specific size specifications 
+
+`grid-auto-rows: measurement units`
+
+This relates to the size for rows created without specific size specifications  |
+
+### __Grid properties for items (child)__
+`grid-column: column position` /* E.g. 1/2  */
+
+Allows for specifying where on the grid the column is to start. 
+
+`grid-column-start: column start position` 
+
+This property determines the starting column position an item is placed on a grid. 
+
+`grid-column-end: column end position `
+
+This property determines the end column position an item is placed on a grid. 
+
+`grid-row: row position /* E.g. 1/2  */`
+
+Allows for specifying where on the grid the row is to start. 
+
+`grid-row-start: row start position` 
+
+This property determines the starting row position an item is placed on a grid. 
+
+`grid-row-end: row end position` 
+
+This property determines the end row position an item is placed on a grid. 
+
+### __Justification and alignment__
+`justify-self: start | center | end | stretch`
+
+Determines how  an item is positioned inside its aligned container in relation to the appropriate axis. 
+
+`align-self: start | center | end | stretch`
+
+Aligns an item within a grid area. 
+
+`place-self: start | stretch /* shorthand for two properties above */`
+
+This setting lets one align and justify an item within a block. 
+
+## Flexbox
+The syntax for creating a flexbox:
+
+```css
+selector{
+    display: flex | inline-flex
+}
+```
+Here the selector can refer to any of the following flex attributes 
+
+* Attribute selector
+
+* Class Selector
+
+* ID Selector 
+
+* Type Selectors 
+
+* Universal Selectors 
+
+The display relates to how you want the selector to be shown. Setting display to flex makes the given selector a flex box. Setting display to inline-flex makes the selector a flex box container while will be inline. 
+
+### __Properties for flexbox container__
+`flex-direction: row | row-reverse | column | column-reverse`
+
+It is possible to specify the direction your elements will follow. Traditionally text goes from left to right which is flex’s default setting however it can be set from right to left or even top to bottom. The four flex-direction are:
+
+* row : organized from left to right 
+
+* row-reverse: organized from right to left 
+
+* column: organized from top to bottom
+
+* column-reverse: organized from bottom to top. 
+
+`flex-wrap: wrap | nowrap`
+
+The standard layout is to plot the elements from left to right in a straight line. The wrap feature allows you customize this to match the size of the window displaying the page. 
+
+* wrap: Automatically wrap the items with as the window space gets smaller. 
+
+* Nowrap: Default setting, items remain rigid and don’t respond  to adjustments made to the window size.
+
+`align-items: flex-start | flex-end | center |Stretch`
+
+This determines how the flex items are to be positioned on the page. Items can be aligned in a variety of ways 
+
+* Flex-start: Similar to standard writing, items start at the top left-hand corner and are positioned from left to right 
+
+* Flex-end: Position begins in the bottom right hand corner. 
+
+* Center: Item is positioned from the center. 
+
+* Stretch: item expands to fill the container. 
+
+`justify-content: flex-start | flex-end | center | space-between | space-evenly`
+
+
+Justify-content determines the alignment of the flex items. 
+
+* Flex-start: goes from right to left along the main axis. 
+
+* Flex-end: goes from left to right along the main axis. 
+
+* Center: Starting at the middle, alignments expands from there. 
+
+* Space-between: first and last item are flush with the left and right wall respectively, every other item is evenly spaced. 
+
+* Space-evenly: each item is equidistant from each other and the boundary wall 
+
+### __Properties for flexbox items (child)__
+`flex-grow: factor of flex’s main size  `
+
+This attribute enables the flex container to grow proportionally to the other containers present. 
+
+`flex-shrink: factor of flex’s main size`
+
+This allows elements to shrink in relation to items around it.
+
+`flex-basis: auto | factor of main’s size | measurement unit`
+
+The sets the initial main size of an item. It can be overridden if other stylized elements are configured. 
+
+`order:position in flex /* Set ascending by default */`
+
+The standard positioning of items is by source order, however this feature will enable you to configure where the items appear on the page. 
+
+`align-self:  start | center | end | stretch`
+
+This determines where on the page the child items will be positioned. Similar to the main flex attributes, start is to the left and end is to the right.
+
+## Text effects cheat sheet
+
+The visual representation of text content can be changed by four main properties: text-transform, font-style, font-weight and text-decoration.
+
+<table><thead><tr><th scope="col"><p><span><span>Property&nbsp;</span></span></p></th><th scope="col"><p><span><span>Values</span></span></p></th><th scope="col"><p><span><span>Description</span></span></p></th></tr></thead><tbody><tr><td><p><span><span>Text-transform</span></span></p></td><td><p><span><span>None, uppercase, lowercase, capitalize, full-width</span></span></p></td><td><p><span><span>Modify text properties</span></span></p></td></tr><tr><td><p><span><span>Font-style</span></span></p></td><td><p><span><span>Normal, italic, oblique</span></span></p></td><td><p><span><span>Font styling options such as italics&nbsp;</span></span></p></td></tr><tr><td><p><span><span>Font-weight</span></span></p></td><td><p><span><span>Normal, weight, lighter, bolder, 100-900</span></span></p></td><td><p><span><span>Other font styling options like change of emphasis such as making text bold</span></span></p></td></tr><tr><td><p><span><span>Text-decoration</span></span></p></td><td><p><span><span>None, underline, overline, line-through</span></span></p></td><td><p><span><span>Shorthand for auxiliary elements added to text using other properties such as text-decoration-line</span></span></p></td></tr></tbody></table>
+
+The additional properties that help configure styling effects are below.
+
+<table><thead><tr><th scope="col"><p><span><span>Text-align</span></span></p></th><th scope="col"><p><span><span>For horizontal alignment of text</span></span></p></th></tr></thead><tbody><tr><td><p><span><span>Text-align-last</span></span></p></td><td><p><span><span>Alignment for the last line when text set to justify</span></span></p></td></tr><tr><td><p><span><span>Text-combine-upright</span></span></p></td><td><p><span><span>Multiple characters into the space of a single character placed upright like in Mandarin</span></span></p></td></tr><tr><td><p><span><span>Text-decoration-color</span></span></p></td><td><p><span><span>Color configuration of the text-decoration</span></span></p></td></tr><tr><td><p><span><span>Text-decoration-line</span></span></p></td><td><p><span><span>Line type in text-decoration such as underline, overline and so on</span></span></p></td></tr><tr><td><p><span><span>Text-decoration-style</span></span></p></td><td><p><span><span>Styles added to lines under text such as wavy, dotted and so on</span></span></p></td></tr><tr><td><p><span><span>Text-decoration-thickness</span></span></p></td><td><p><span><span>Thickness of the decoration line</span></span></p></td></tr><tr><td><p><span><span>Text-emphasis</span></span></p></td><td><p><span><span>Shorthand for other properties such as color and style&nbsp;</span></span></p></td></tr><tr><td><p><span><span>Text-indent</span></span></p></td><td><p><span><span>The indentation of the first line&nbsp;</span></span></p></td></tr><tr><td><p><span><span>Text-justify</span></span></p></td><td><p><span><span>Specifies the justification method used when text-align is "justify"</span></span></p></td></tr><tr><td><p><span><span>Text-orientation</span></span></p></td><td><p><span><span>Orientation of text in a line such as sideways, upright and so on</span></span></p></td></tr><tr><td><p><span><span>Text-shadow</span></span></p></td><td><p><span><span>Adds shadow to text </span></span></p></td></tr><tr><td><p><span><span>Text-underline-position</span></span></p></td><td><p><span><span>Declare position of underline set using the text-decoration property</span></span></p></td></tr></tbody></table>
+
+
+Other than these, there are some more properties that help modify the alignment and define the scope of text with their containers. 
+
+<table><thead><tr><th scope="col"><p><span><span>Property&nbsp;</span></span></p></th><th scope="col"><p><span><span>Values</span></span></p></th><th scope="col"><p><span><span>Description</span></span></p></th></tr></thead><tbody><tr><td><p><span><span>Text-overflow</span></span></p></td><td><p><span><span>Clip, ellipsis</span></span></p></td><td><p><span><span>Determines overflow behavior of text with the container</span></span></p></td></tr><tr><td><p><span><span>Word-wrap</span></span></p></td><td><p><span><span>Normal, anywhere, break-word</span></span></p></td><td><p><span><span>Applies to inline elements, alias for overflow-wrap</span></span></p></td></tr><tr><td><p><span><span>Word-break</span></span></p></td><td><p><span><span>Normal, break-all, keep-all, break-word</span></span></p></td><td><p><span><span>Used for long words to decide if words should break or overflow</span></span></p></td></tr><tr><td><p><span><span>Writing-mode</span></span></p></td><td><p><span><span>Horizontal-tb, vertical-lr, vertical-rl</span></span></p></td><td><p><span><span>Can set the text direction vertical or horizontal</span></span></p></td></tr></tbody></table>
+
+
+
+
 
 ## Additional resources
 [Client-Side Form Validation with HTML5](https://www.sitepoint.com/client-side-form-validation-html5/)
